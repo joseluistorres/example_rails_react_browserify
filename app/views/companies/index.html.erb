@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Example with React on Rails gem</h1>
+  
+
+<div class="container" id="companies_container">
+  <%#= react_component("CompaniesApp", props: @companies, prerender: false) %>
+
+</div>
+<%= link_to 'New Company', new_company_path %>
+
+<script>
+var fieldCentroidsAsWkt, fieldCentroids, fieldsCoords, zoneCoords;
+
+$(document).ready(function() {
+
+  ReactDOM.render(
+    React.createElement(CompaniesApp,
+      {
+        companies: <%= raw @companies.to_json %>
+      }),
+    document.getElementById('companies_container')
+  );
+});
+</script>
